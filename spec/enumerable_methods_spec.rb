@@ -112,4 +112,21 @@ describe "Enumerable" do
       end
     end
   end
+
+  describe "#my_inject" do
+    context "given [2,4,6]" do
+      it "sums up to 12" do
+        expect(arr.my_inject { |sum, e| sum + e} ).to eql(12)
+      end
+      it "multiples up to 48" do
+        expect(arr.my_inject { |multi, e| multi * e} ).to eql(48)
+      end
+    end
+
+    context "given {wow: 'cool', waw: 2}" do
+      it "returns 'cool2' converting values to strings and adding together" do
+        expect(hash.my_inject { |str, kv| str + kv[1].to_s} ).to eql('cool2')
+      end
+    end
+  end
 end

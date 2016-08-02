@@ -73,13 +73,20 @@ module Enumerable
   	end
   end
 
-  def my_inject
+  def my_inject(param=nil)
     return self unless block_given?
-    accu = self[0]
-  	self[1..-1].my_each do |e|
+    if param.nil?
+      myself = self
+      if myself.is_a?(Hash)
+        accu = myself.shift[1]
+      else
+        accu = myself.shift
+      end
+  	  myself.my_each do |e|
   	  	accu = yield accu, e
-  	end
+  	  end
   	accu
+    end
   end
 end
 
