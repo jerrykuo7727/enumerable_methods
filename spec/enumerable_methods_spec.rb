@@ -95,5 +95,21 @@ describe "Enumerable" do
       end
     end
   end
-    
+  
+  describe "#my_map" do
+    context "given [2,4,6]" do
+      it "returns [4,6,8] adding 2" do
+        expect(arr.my_map { |e| e + 2 }).to eql([4, 6, 8])
+      end
+      it "returns [6,12,18] multiplying 3" do
+        expect(arr.my_map { |e| e * 3 }).to eql([6, 12, 18])
+      end
+    end
+
+    context "given {wow: 'cool', waw: 2}" do
+      it "returns ['cool ass', '2 ass'] converting values to strings and adding ' ass'" do
+        expect(hash.my_map { |k, v| v.to_s + ' ass' }).to eql(['cool ass', '2 ass'])
+      end
+    end
+  end
 end
