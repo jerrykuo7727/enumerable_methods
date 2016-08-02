@@ -8,8 +8,10 @@ module Enumerable
 
   def my_each_with_index
   	return self unless block_given?
-  	0.upto(self.size-1) do |i|
-      yield self[i], i
+    i = 0
+  	self.my_each do |e|
+      yield e, i
+      i += 1
   	end
   end
 
