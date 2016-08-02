@@ -5,8 +5,6 @@ describe "Enumerable" do
   let(:hash) { {wow: 'cool', waw: 2} }
 
   describe "#my_each" do
-    
-
     context "given [2,4,6]" do
       it "sums up to 12" do
         sum = 0
@@ -64,5 +62,18 @@ describe "Enumerable" do
     end
   end
 
+  describe "#my_select" do
+    context "given [2,4,6]" do
+      it "return [4,6] selecting number > 3" do
+        expect(arr.my_select { |e| e > 3 }).to eql([4, 6])
+      end
+    end
+
+    context "given {wow: 'cool', waw: 2}" do
+      it "returns ':waw' selecting values being Fixnum" do
+        expect(hash.my_select { |k, v| v.is_a?(Fixnum) }).to eql([[:waw, 2]])
+      end
+    end
+  end
 
 end
