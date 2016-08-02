@@ -76,4 +76,24 @@ describe "Enumerable" do
     end
   end
 
+  describe "#my_all?" do
+    context "given [2,4,6]" do
+      it "returns 'true' checking all elements being even numbers" do
+        expect(arr.my_all? { |e| e % 2 == 0 }).to eql(true)
+      end
+      it "returns 'false' checking all elements > 3" do
+        expect(arr.my_all? { |e| e > 3 }).to eql(false)
+      end
+    end
+
+    context "given {wow: 'cool', waw: 2}" do
+      it "returns 'true' checking all keys are symbols" do
+        expect(hash.my_all? { |k, v| k.is_a?(Symbol) }).to eql(true)
+      end
+      it "returns 'false' checking all values are strings" do
+        expect(hash.my_all? { |k, v| v.is_a?(String) }).to eql(false)
+      end
+    end
+  end
+    
 end
