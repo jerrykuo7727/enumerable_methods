@@ -46,11 +46,23 @@ describe "Enumerable" do
         arr.my_each_with_index { |e| multiplication *= e }
         expect(multiplication).to eql(48)
       end
-      it "returns [0,1,2] as index" do
+      it "returns [0,1,2] as indices" do
         indices = []
         arr.my_each_with_index { |e, i| indices << i }
         expect(indices).to eql([0, 1, 2])
       end
     end
+
+    context "given {wow: 'cool', waw: 2}" do
+      it "collect k/v pairs and indices as {[:wow,'cool']=>0,[:waw,2]=>1}" do
+        kv_indices = {}
+        hash.my_each_with_index do |kv, i|
+          kv_indices[kv] = i
+        end
+        expect(kv_indices).to eql({[:wow,'cool']=>0,[:waw,2]=>1})
+      end
+    end
   end
+
+
 end
